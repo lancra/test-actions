@@ -15,4 +15,4 @@ jobs:
       - name: Define
         uses: ./.github/actions/define-environment
         with:
-          environment: ${{ jobs.build.environment }}
+          environment: ${{ vars.ENVIRONMENT_NAME }}
