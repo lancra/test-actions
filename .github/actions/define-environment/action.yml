@@ -1,0 +1,27 @@
+name: "Define Environment"
+description: "Defines properties for an environment."
+
+inputs:
+  environment:
+    description: "The GitHub environment."
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - id: environment-definition
+      name: Define Environment Values
+      run: |
+        value=${{ inputs.environment }}
+        value=${value,,}
+        echo "segment=$value" >> $GITHUB_OUTPUT
+
+        value=${value:0:1}
+        echo "character=$value" >> $GITHUB_OUTPUT
+      shell: bash
+    - name: Write Outputs
+      run: |
+        echo "Environment Character = ${{ steps.environment-definition.outputs.character }}"
+        echo "Environment Segment = ${{ steps.environment-definition.outputs.segment }}"
+        echo "GitHub SHA = ${{ github.sha }}"
+      shell: bash
