@@ -23,6 +23,5 @@ runs:
       run: |
         echo "Environment Character = ${{ steps.environment-definition.outputs.character }}"
         echo "Environment Segment = ${{ steps.environment-definition.outputs.segment }}"
-        echo "Environment Input = ${{ inputs.environment }}"
-        echo "Environment Variable = ${{ vars.ENVIRONMENT_NAME }}"
+        echo "GitHub SHA = ${{ github.sha }}"
       shell: bash
