@@ -1,0 +1,18 @@
+name: Manual Action
+on:
+  workflow_dispatch:
+jobs:
+  print:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout Source
+          uses: actions/checkout@v4
+        - name: Print Files
+          id: print-files
+          uses: ./.github/actions/print-files
+        - name: Print Output
+          shell: bash
+          run: echo random-number ${{ steps.print-files.outputs.number }}
+        - name: Print Directory
+          shell: bash
+          run: ls -l

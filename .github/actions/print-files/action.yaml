@@ -1,0 +1,18 @@
+name: Print Files
+description: Prints the contents of files in the directory.
+outputs:
+  number:
+    description: A number to print
+    value: "42"
+runs:
+  using: composite
+  steps:
+    - name: Print Foo
+      shell: bash
+      run: cat foo.txt
+    - name: Print Bar
+      shell: bash
+      run: cat bar.txt
+    - name: Add Baz
+      shell: bash
+      run: touch baz.txt
